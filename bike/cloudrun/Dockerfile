@@ -2,10 +2,10 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY cloudrun/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY dashboard.py .
+COPY cloudrun/dashboard.py .
 COPY data/ ./data/
 
 # Cloud Run 透過 PORT 環境變數指定 port（預設 8080）
