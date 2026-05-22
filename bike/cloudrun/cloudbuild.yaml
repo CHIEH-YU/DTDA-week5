@@ -1,8 +1,11 @@
 steps:
-  # 建構 Docker image
+  # 建構 Docker image（dir 設為 bike/，context 為 bike/，Dockerfile 在 cloudrun/ 子目錄）
   - name: 'gcr.io/cloud-builders/docker'
+    dir: 'bike'
     args:
       - 'build'
+      - '-f'
+      - 'cloudrun/Dockerfile'
       - '-t'
       - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/${_SERVICE}:$COMMIT_SHA'
       - '.'
