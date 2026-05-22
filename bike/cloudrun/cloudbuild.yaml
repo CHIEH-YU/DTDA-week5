@@ -35,9 +35,9 @@ steps:
 
 # 預設替換變數（在 Cloud Build trigger 設定頁面可覆蓋）
 substitutions:
-  _REGION: asia-east1        # 台灣最近的 GCP 區域
+  _REGION: europe-west1       # 台灣最近的 GCP 區域
   _REPO: cloud-run-source-deploy
-  _SERVICE: bike-dashboard
+  _SERVICE: dtda-week5
 
 options:
   logging: CLOUD_LOGGING_ONLY
