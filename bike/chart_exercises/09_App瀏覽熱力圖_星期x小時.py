@@ -20,8 +20,8 @@ st.caption("資料來源：map_browsing.csv")
 DOW_MAP = {0: "週一", 1: "週二", 2: "週三", 3: "週四",
            4: "週五", 5: "週六", 6: "週日"}
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
-browsing = pd.read_csv(DATA_DIR / "map_browsing.csv", parse_dates=["click_date"])
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
+browsing = pd.read_csv(str(DATA_DIR / "map_browsing.csv"), parse_dates=["click_date"])
 browsing["dow"] = browsing["click_date"].dt.dayofweek
 
 # ── 步驟 1：雙維度分組，「加總」點擊次數 ─────────────────────
@@ -57,7 +57,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.markdown("---")
 st.subheader("🔍 延伸練習：和訂單熱力圖並排比較")
 
-orders = pd.read_csv(DATA_DIR / "orders.csv", parse_dates=["rent_start_dt"])
+orders = pd.read_csv(str(DATA_DIR / "orders.csv"), parse_dates=["rent_start_dt"])
 orders["hour"] = orders["rent_start_dt"].dt.hour
 orders["dow"]  = orders["rent_start_dt"].dt.dayofweek
 ord_hm = orders.groupby(["dow", "hour"]).size().reset_index(name="借車次數")

@@ -18,9 +18,9 @@ st.title("練習 01｜月借車趨勢（長條圖）")
 st.caption("資料來源：orders.csv")
 
 # ── 步驟 1：載入訂單資料，並解析日期欄位 ──────────────────────
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 orders = pd.read_csv(
-    DATA_DIR / "orders.csv",
+    str(DATA_DIR / "orders.csv"),
     parse_dates=["rent_start_dt"],   # 把這欄直接解析成 datetime
 )
 

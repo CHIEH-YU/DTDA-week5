@@ -17,14 +17,14 @@ st.set_page_config(page_title="練習 10｜供需趨勢", layout="wide")
 st.title("練習 10｜每日供需趨勢（雙 Y 軸折線圖）")
 st.caption("資料來源：available_cars.csv + orders.csv + map_browsing.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 
 # ── 步驟 1：各自準備三個「每日匯總」資料 ─────────────────────
-available_cars = pd.read_csv(DATA_DIR / "available_cars.csv",
+available_cars = pd.read_csv(str(DATA_DIR / "available_cars.csv"),
                              parse_dates=["available_date"])
-orders         = pd.read_csv(DATA_DIR / "orders.csv",
+orders         = pd.read_csv(str(DATA_DIR / "orders.csv"),
                              parse_dates=["rent_start_dt"])
-map_browsing   = pd.read_csv(DATA_DIR / "map_browsing.csv",
+map_browsing   = pd.read_csv(str(DATA_DIR / "map_browsing.csv"),
                              parse_dates=["click_date"])
 
 orders["date"] = orders["rent_start_dt"].dt.normalize()  # 只留日期部分

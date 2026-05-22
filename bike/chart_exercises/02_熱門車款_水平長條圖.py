@@ -17,8 +17,8 @@ st.set_page_config(page_title="練習 02｜熱門車款", layout="wide")
 st.title("練習 02｜熱門車款 Top 10（水平長條圖）")
 st.caption("資料來源：orders.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
-orders = pd.read_csv(DATA_DIR / "orders.csv")
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
+orders = pd.read_csv(str(DATA_DIR / "orders.csv"))
 
 # ── 步驟 1：統計每種車款出現幾次 ─────────────────────────────
 bike_counts = orders["car_series_name"].value_counts()

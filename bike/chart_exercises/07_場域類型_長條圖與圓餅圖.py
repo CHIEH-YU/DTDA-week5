@@ -19,7 +19,7 @@ st.set_page_config(page_title="練習 07｜場域類型", layout="wide")
 st.title("練習 07｜場域類型分析（長條圖 + 圓餅圖）")
 st.caption("資料來源：orders_real.json（真實 YouBike 2.0 站點）+ orders.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 
 # ── 從站名關鍵字推導場域類型 ──────────────────────────────────
 # YouBike 站點名稱本身蘊含位置資訊，可以用關鍵字分類
@@ -38,7 +38,7 @@ def derive_biz_type(name: str) -> str:
     return "住宅社區"   # 預設分類
 
 # ── 載入真實站點資料 ──────────────────────────────────────────
-with open(DATA_DIR / "orders_real.json", encoding="utf-8") as f:
+with open(str(DATA_DIR / "orders_real.json"), encoding="utf-8") as f:
     stations = pd.DataFrame(json.load(f))
 stations = stations[stations["act"].astype(str) == "1"].copy()
 stations["sno"] = stations["sno"].astype(str)
@@ -54,7 +54,7 @@ biz_stations = (
 
 # ── 資料 B：各場域類型有幾筆訂單（需先 merge）────────────────
 orders = pd.read_csv(
-    DATA_DIR / "orders.csv",
+    str(DATA_DIR / "orders.csv"),
     dtype={"depart_parking_lot_id": str},
 )
 orders_geo = orders.merge(

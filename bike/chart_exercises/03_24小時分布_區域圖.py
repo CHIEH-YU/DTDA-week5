@@ -17,8 +17,8 @@ st.set_page_config(page_title="練習 03｜24小時分布", layout="wide")
 st.title("練習 03｜24 小時借車分布（區域圖）")
 st.caption("資料來源：orders.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
-orders = pd.read_csv(DATA_DIR / "orders.csv", parse_dates=["rent_start_dt"])
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
+orders = pd.read_csv(str(DATA_DIR / "orders.csv"), parse_dates=["rent_start_dt"])
 
 # ── 步驟 1：從 rent_start_dt 抽出「小時」欄位 ─────────────────
 orders["hour"] = orders["rent_start_dt"].dt.hour

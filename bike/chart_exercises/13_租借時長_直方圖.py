@@ -17,9 +17,9 @@ st.set_page_config(page_title="練習 13｜租借時長", layout="wide")
 st.title("練習 13｜租借時長分布（直方圖）")
 st.caption("資料來源：orders.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 orders = pd.read_csv(
-    DATA_DIR / "orders.csv",
+    str(DATA_DIR / "orders.csv"),
     parse_dates=["rent_start_dt", "rent_end_dt"],
 )
 

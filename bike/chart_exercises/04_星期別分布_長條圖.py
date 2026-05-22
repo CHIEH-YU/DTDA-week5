@@ -17,8 +17,8 @@ st.set_page_config(page_title="練習 04｜星期別分布", layout="wide")
 st.title("練習 04｜星期別借車分布（長條圖）")
 st.caption("資料來源：orders.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
-orders = pd.read_csv(DATA_DIR / "orders.csv", parse_dates=["rent_start_dt"])
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
+orders = pd.read_csv(str(DATA_DIR / "orders.csv"), parse_dates=["rent_start_dt"])
 
 # ── 步驟 1：抽出星期數（0=週一, 6=週日）─────────────────────
 orders["dow"] = orders["rent_start_dt"].dt.dayofweek

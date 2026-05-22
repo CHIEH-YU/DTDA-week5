@@ -17,9 +17,9 @@ st.set_page_config(page_title="練習 12｜轉換率", layout="wide")
 st.title("練習 12｜各小時 App 瀏覽 → 借車轉換率")
 st.caption("資料來源：map_browsing.csv + orders.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
-browsing = pd.read_csv(DATA_DIR / "map_browsing.csv")
-orders   = pd.read_csv(DATA_DIR / "orders.csv", parse_dates=["rent_start_dt"])
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
+browsing = pd.read_csv(str(DATA_DIR / "map_browsing.csv"))
+orders   = pd.read_csv(str(DATA_DIR / "orders.csv"), parse_dates=["rent_start_dt"])
 orders["hour"] = orders["rent_start_dt"].dt.hour
 
 # ── 步驟 1：各小時瀏覽總點擊數 ───────────────────────────────

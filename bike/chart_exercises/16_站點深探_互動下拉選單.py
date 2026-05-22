@@ -21,10 +21,10 @@ st.set_page_config(page_title="練習 16｜站點深探", layout="wide")
 st.title("練習 16｜站點深探【綜合練習】")
 st.caption("資料來源：orders.csv + orders_real.json + available_cars.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 
 # ── 載入真實站點資料 ──────────────────────────────────────────
-with open(DATA_DIR / "orders_real.json", encoding="utf-8") as f:
+with open(str(DATA_DIR / "orders_real.json"), encoding="utf-8") as f:
     stations = pd.DataFrame(json.load(f))
 stations = stations[stations["act"].astype(str) == "1"].copy()
 stations["sno"] = stations["sno"].astype(str)
@@ -33,11 +33,11 @@ stations["Quantity"] = stations["Quantity"].astype(int)
 
 # ── 載入訂單與供給資料 ────────────────────────────────────────
 orders = pd.read_csv(
-    DATA_DIR / "orders.csv",
+    str(DATA_DIR / "orders.csv"),
     parse_dates=["rent_start_dt"],
     dtype={"depart_parking_lot_id": str, "return_parking_lot_id": str},
 )
-available_cars = pd.read_csv(DATA_DIR / "available_cars.csv")
+available_cars = pd.read_csv(str(DATA_DIR / "available_cars.csv"))
 available_cars["parking_lot_id"] = available_cars["parking_lot_id"].astype(str)
 
 orders["hour"]  = orders["rent_start_dt"].dt.hour

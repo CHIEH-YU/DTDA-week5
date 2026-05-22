@@ -18,9 +18,9 @@ st.set_page_config(page_title="練習 11｜逐小時供需", layout="wide")
 st.title("練習 11｜逐小時供需對比（Bar + Line 複合圖）")
 st.caption("資料來源：available_cars.csv + orders.csv")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
-available_cars = pd.read_csv(DATA_DIR / "available_cars.csv")
-orders         = pd.read_csv(DATA_DIR / "orders.csv", parse_dates=["rent_start_dt"])
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
+available_cars = pd.read_csv(str(DATA_DIR / "available_cars.csv"))
+orders         = pd.read_csv(str(DATA_DIR / "orders.csv"), parse_dates=["rent_start_dt"])
 orders["hour"] = orders["rent_start_dt"].dt.hour
 
 # ── 步驟 1：供給 — 各小時「平均」可用車數 ────────────────────

@@ -19,10 +19,10 @@ st.set_page_config(page_title="練習 15｜站點地圖", layout="wide")
 st.title("練習 15｜YouBike 2.0 站點地圖（散點地圖）")
 st.caption("資料來源：orders_real.json（台北市 YouBike 2.0 即時站點）")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 
 # ── 步驟 1：載入真實站點資料（JSON 格式）────────────────────
-with open(DATA_DIR / "orders_real.json", encoding="utf-8") as f:
+with open(str(DATA_DIR / "orders_real.json"), encoding="utf-8") as f:
     stations = pd.DataFrame(json.load(f))
 
 # 只保留啟用中的站點（act == "1"）

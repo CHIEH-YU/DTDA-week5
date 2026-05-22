@@ -20,8 +20,8 @@ st.caption("資料來源：orders.csv")
 DOW_MAP = {0: "週一", 1: "週二", 2: "週三", 3: "週四",
            4: "週五", 5: "週六", 6: "週日"}
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
-orders = pd.read_csv(DATA_DIR / "orders.csv", parse_dates=["rent_start_dt"])
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
+orders = pd.read_csv(str(DATA_DIR / "orders.csv"), parse_dates=["rent_start_dt"])
 orders["hour"] = orders["rent_start_dt"].dt.hour
 orders["dow"]  = orders["rent_start_dt"].dt.dayofweek
 

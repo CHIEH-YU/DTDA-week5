@@ -18,16 +18,16 @@ st.set_page_config(page_title="練習 06｜熱門行政區", layout="wide")
 st.title("練習 06｜熱門行政區 Top 15（水平長條圖）")
 st.caption("資料來源：orders.csv + orders_real.json（真實 YouBike 2.0 站點）")
 
-DATA_DIR = pathlib.Path(__file__).parent.parent / "data"
+DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 
 # ── 載入真實站點資料 ──────────────────────────────────────────
-with open(DATA_DIR / "orders_real.json", encoding="utf-8") as f:
+with open(str(DATA_DIR / "orders_real.json"), encoding="utf-8") as f:
     stations = pd.DataFrame(json.load(f))
 stations = stations[stations["act"].astype(str) == "1"].copy()
 stations["sno"] = stations["sno"].astype(str)
 
 orders = pd.read_csv(
-    DATA_DIR / "orders.csv",
+    str(DATA_DIR / "orders.csv"),
     dtype={"depart_parking_lot_id": str},
 )
 
