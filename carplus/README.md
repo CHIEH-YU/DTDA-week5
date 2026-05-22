@@ -26,12 +26,11 @@
 
 | 資料表 | 筆數 | 說明 |
 |---|---|---|
-| `orders.csv` | ~135K | 訂單（取還車時間、站點、車款、里程） |
-| `parking_lots.csv` | ~960 | 站點基本資料（含經緯度、城市、業務類型） |
-| `available_cars.csv` | ~560萬 | 各站點逐小時可用車數 |
-| `map_browsing.csv` | ~146萬 | App 地圖頁瀏覽流量（需求代理指標） |
+| `orders.csv` | ~135K | |
+| `parking_lots.csv` | ~960 | |
+| `available_cars.csv` | ~560萬 | |
+| `map_browsing.csv` | ~146萬 |  |
 
-欄位詳細定義請見 [schema.md](schema.md)。
 
 ---
 
