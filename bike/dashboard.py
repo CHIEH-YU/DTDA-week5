@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 warnings.filterwarnings("ignore")
 
 st.set_page_config(
-    page_title="台灣共享單車營運分析儀表板",
+    page_title="台灣Ubike儀表板",
     page_icon="🚲",
     layout="wide",
     initial_sidebar_state="expanded",
